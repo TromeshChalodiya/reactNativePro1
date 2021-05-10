@@ -16,8 +16,7 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "uuid": "^8.3.2"
+    "@babel/core": "^7.9.0"
   },
   "private": true
 }
