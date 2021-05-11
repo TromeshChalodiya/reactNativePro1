@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Button, Modal } from 'react-native';
+import { View, TextInput, StyleSheet, Button, Modal, Text } from 'react-native';
 
 const GoalInput = (props) => {
   const [enteredGoals, setenteredGoals] = useState('');
 
   const inputTextChange = (textValue) => {
+    debugger;
+    console.log('===>', textValue);
     setenteredGoals(textValue);
   };
 
@@ -17,10 +19,18 @@ const GoalInput = (props) => {
           onChangeText={inputTextChange}
           value={enteredGoals}
         />
-        <Button
-          title='ADD'
-          onPress={() => props.onAddGoal(enteredGoals, setenteredGoals)}
-        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.cancelButton}>
+            <Button title='CANCEL' onPress={props.onCancel} color='#1477D7' />
+          </View>
+          <View style={styles.addButton}>
+            <Button
+              title='ADD'
+              onPress={() => props.onAddGoal(enteredGoals, setenteredGoals)}
+              color='white'
+            />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -35,9 +45,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textInput: {
-    padding: 10,
-    borderColor: 'black',
-    borderWidth: 1,
+    padding: 15,
+    borderColor: '#1477D7',
+    borderWidth: 2,
     width: '90%',
+    borderRadius: 4,
+    fontSize: 20,
+  },
+  buttonContainer: {
+    paddingTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '80%',
+  },
+  cancelButton: {
+    paddingVertical: 4,
+    paddingHorizontal: 25,
+    borderRadius: 4,
+    borderColor: '#1477D7',
+    borderWidth: 2,
+  },
+  addButton: {
+    paddingVertical: 4,
+    paddingHorizontal: 25,
+    borderRadius: 4,
+    borderWidth: 2,
+    backgroundColor: '#1477d7',
+    borderColor: '#1477d7',
   },
 });
